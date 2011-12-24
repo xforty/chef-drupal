@@ -1,0 +1,20 @@
+= DESCRIPTION:
+
+Sets up an apache virtualhost for a drupal site.
+
+= REQUIREMENTS:
+
+* Opscode's apache2 cookbook - http://community.opscode.com/cookbooks/apache2/
+
+= ATTRIBUTES:
+
+== default:
+
+* node[:drupal][:project_name] - fqdn of the site
+* node[:drupal][:server_name] - URL used to access the site locally
+* node[:drupal][:docroot] - apache docroot for the site
+
+= USAGE:
+
+Simply include the `drupal` recipe and override any of the attributes 
+as necessary.
