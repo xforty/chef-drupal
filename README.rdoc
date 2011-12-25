@@ -10,9 +10,9 @@ Sets up an apache virtualhost for a drupal site.
 
 == default:
 
-* node[:drupal][:project_name] - fqdn of the site
-* node[:drupal][:server_name] - URL used to access the site locally
-* node[:drupal][:docroot] - apache docroot for the site
+* node[:drupal][:project_name] - fqdn of the site (you should override this)
+* node[:drupal][:server_name] - URL used to access the site locally (not necessary to override)
+* node[:drupal][:docroot] - apache docroot for the site (not necessary to override)
 
 = USAGE:
 
