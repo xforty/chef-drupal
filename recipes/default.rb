@@ -19,6 +19,7 @@
 #
 
 include_recipe "apache2"
+include_recipe "apache2::mod_php5"
 
 web_app node[:drupal][:project_name] do
   server_name node[:drupal][:server_name]
