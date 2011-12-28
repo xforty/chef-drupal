@@ -1,7 +1,7 @@
 #
 # Author:: David King <dking@xforty.com>
 # Cookbook Name:: drupal
-# Recipe:: default
+# Recipe:: dev
 #
 # Copyright 2011, xforty technologies
 #
@@ -18,17 +18,8 @@
 # limitations under the License.
 #
 
-include_recipe "php"
-include_recipe "php::module_mysql"
-include_recipe "imagemagick"
-include_recipe "apache2"
-include_recipe "apache2::mod_php5"
-include_recipe "mysql::server"
-include_recipe "drush"
-include_recipe "drush::make"
-
-web_app node[:drupal][:project_name] do
-  server_name node[:drupal][:server_name]
-  server_aliases [node[:drupal][:server_name], 'local.vbox']
-  docroot node[:drupal][:docroot]
-end
+include_recipe "git"
+#include_recipe "xargs"
+#include_recipe "phpmyadmin"
+#include_recipe "xhprof"
+#include_recipe "webgrind"
