@@ -32,6 +32,7 @@ php_pear "uploadprogress" do
   action :install
 end
 
+# Define virtualhost in apache for site
 web_app node[:drupal][:project_name] do
   server_name node[:drupal][:server_name]
   server_aliases [node[:drupal][:server_name], 'local.vbox']
