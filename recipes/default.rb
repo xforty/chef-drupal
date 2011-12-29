@@ -27,6 +27,11 @@ include_recipe "mysql::server"
 include_recipe "drush"
 include_recipe "drush::make"
 
+# Provides better feedback during file uploads
+php_pear "uploadprogress" do
+  action :install
+end
+
 web_app node[:drupal][:project_name] do
   server_name node[:drupal][:server_name]
   server_aliases [node[:drupal][:server_name], 'local.vbox']
