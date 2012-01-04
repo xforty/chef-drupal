@@ -19,10 +19,13 @@
 #
 
 include_recipe "php"
+include_recipe "php::module_gd"
 include_recipe "php::module_mysql"
 include_recipe "imagemagick"
 include_recipe "apache2"
+include_recipe "apache2::mod_expires"
 include_recipe "apache2::mod_php5"
+include_recipe "apache2::mod_rewrite"
 include_recipe "mysql::server"
 include_recipe "drush"
 include_recipe "drush::make"
