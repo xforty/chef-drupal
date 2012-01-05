@@ -42,13 +42,3 @@ web_app node[:drupal][:project_name] do
   server_aliases [node[:drupal][:server_name], 'local.vbox']
   docroot node[:drupal][:docroot]
 end
-
-# Run drush make if there is a distro.make file and docroot is empty
-execute "run_distro_make" do
-  cwd node[:drupal][:docroot]
-  command "drush make #{node[:drupal][:make_options]} #{node[:drupal][:project_root]}/distro.make ."
-  only_if do
-    File.file?("#{node[:drupal][:project_root]}/distro.make") &&
-        (Dir.entries(node[:drupal][:docroot]) - %w{ . .. }).empty?
-  end
-end

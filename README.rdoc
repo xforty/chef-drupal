@@ -1,8 +1,7 @@
 = DESCRIPTION:
 
-Sets up an apache virtualhost for a drupal site.  If a distro.make file
-is located in the project's root folder and the docroot folder is empty,
-we call drush make to build the site as well.
+Sets up an apache virtualhost and installs all the required software
+for a drupal site.
 
 = REQUIREMENTS:
 
@@ -13,10 +12,8 @@ we call drush make to build the site as well.
 == default:
 
 * node[:drupal][:project_name] - fqdn of the site (you should override this)
-* node[:drupal][:project_root] - full filesystem path to the project root (not necessary to override)
 * node[:drupal][:docroot]      - apache docroot for the site (not necessary to override)
 * node[:drupal][:server_name]  - URL used to access the site locally (not necessary to override)
-* node[:drupal][:make_options] - any options you want to pass to drush make (not necessary to override)
 
 = USAGE:
 
