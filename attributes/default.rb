@@ -19,5 +19,6 @@
 #
 
 default[:drupal][:project_name] = "drupal"
-default[:drupal][:docroot]      = "/vagrant/www"
 default[:drupal][:server_name]  = "local.#{node[:drupal][:project_name]}"
+default[:drupal][:docroot]      = "/srv/www"
+
