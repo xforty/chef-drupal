@@ -29,7 +29,6 @@ include_recipe "apache2::mod_php5"
 include_recipe "apache2::mod_rewrite"
 include_recipe "mysql::server"
 include_recipe "drush"
-include_recipe "drush::make"
 
 # Provides better feedback during file uploads
 php_pear "uploadprogress" do
