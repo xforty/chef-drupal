@@ -1,0 +1,9 @@
+*nat
+:PREROUTING ACCEPT
+:INPUT ACCEPT
+:OUTPUT ACCEPT
+:POSTROUTING ACCEPT
+<% @forwarded_ports.each do |h| -%>
+-A OUTPUT -p tcp --dport <%= h['hostport'] %> -j REDIRECT --to-ports <%= h['guestport'] %>
+<% end -%>
+COMMIT

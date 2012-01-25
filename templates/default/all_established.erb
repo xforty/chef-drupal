@@ -1,0 +1,4 @@
+# Keep established connections alive
+-A FWR -m state --state RELATED,ESTABLISHED -j ACCEPT
+# Just accept everything
+-A FWR -j ACCEPT

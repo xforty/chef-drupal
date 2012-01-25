@@ -29,6 +29,7 @@ include_recipe "apache2::mod_php5"
 include_recipe "apache2::mod_rewrite"
 include_recipe "mysql::server"
 include_recipe "drush"
+include_recipe "iptables"
 
 # Provides better feedback during file uploads
 php_pear "uploadprogress" do
@@ -41,3 +42,18 @@ web_app node[:drupal][:project_name] do
   server_aliases [node[:drupal][:server_name], 'local.vbox']
   docroot node[:drupal][:docroot]
 end
+
+unless node[:vagrant][:config][:keys][:vm][:network]
+  # Define a iptables.snat file so rebuild-iptables uses it
+  template "/etc/iptables.snat" do
+    source "iptables.snat.erb"
+    mode 0440
+    owner "root"
+    group "root"
+    variables :forwarded_ports => node[:vagrant][:config][:keys][:vm][:forwarded_ports]
+  end
+
+  # Basic rule to kick off rebuild-iptables 
+  iptables_rule "all_established"
+end
+
