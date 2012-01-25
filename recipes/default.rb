@@ -19,9 +19,9 @@
 #
 
 include_recipe "php"
-include_recipe "php::module_curl"
-include_recipe "php::module_gd"
-include_recipe "php::module_mysql"
+include_recipe "php_curl"
+include_recipe "php_gd"
+include_recipe "php_mysql"
 include_recipe "imagemagick"
 include_recipe "apache2"
 include_recipe "apache2::mod_expires"
