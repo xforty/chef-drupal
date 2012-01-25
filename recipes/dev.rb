@@ -18,8 +18,10 @@
 # limitations under the License.
 #
 
-include_recipe "git"
-#include_recipe "xargs"
+# TODO: finish this recipe
+
+#include_recipe "git"
+#include_recipe "xdebug"
 #include_recipe "phpmyadmin"
 #include_recipe "xhprof"
 #include_recipe "webgrind"
