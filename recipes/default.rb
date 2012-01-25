@@ -18,10 +18,6 @@
 # limitations under the License.
 #
 
-if node.platform?("redhat","centos","fedora")
-  include_recipe "selinux::disabled"
-end
-
 include_recipe "php"
 include_recipe "php::module_curl"
 include_recipe "php::module_gd"
