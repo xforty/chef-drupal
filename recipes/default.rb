@@ -19,7 +19,7 @@
 #
 
 include_recipe "php"
-include_recipe "pear"
+include_recipe "php_pear"
 include_recipe "php_module::curl"
 include_recipe "php_module::dom"
 include_recipe "php_module::gd"
