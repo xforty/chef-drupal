@@ -19,6 +19,7 @@
 #
 
 include_recipe "php"
+include_recipe "pear"
 include_recipe "php_curl"
 include_recipe "php_gd"
 include_recipe "php_mysql"

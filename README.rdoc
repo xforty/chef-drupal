@@ -1,7 +1,7 @@
 = DESCRIPTION:
 
 Sets up an apache virtualhost and installs all the required software
-for a drupal site.
+for a drupal environment.
 
 = REQUIREMENTS:
 
