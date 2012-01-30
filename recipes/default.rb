@@ -42,7 +42,8 @@ web_app node[:drupal][:project_name] do
   docroot node[:drupal][:docroot]
 end
 
-unless node[:vagrant][:config][:keys][:vm][:network]
+# Only use iptables if no networking was defined.
+if node['vagrant']['config']['keys']['vm']['networks'].empty?
   # Define a iptables.snat file so rebuild-iptables uses it
   template "/etc/iptables.snat" do
     source "iptables.snat.erb"
