@@ -33,7 +33,6 @@ include_recipe "apache2::mod_php5"
 include_recipe "apache2::mod_rewrite"
 include_recipe "mysql::server"
 include_recipe "drush"
-include_recipe "iptables"
 
 # Define virtualhost in apache for site
 web_app node[:drupal][:project_name] do
@@ -44,6 +43,9 @@ end
 
 # Only use iptables if no networking was defined.
 if node['vagrant']['config']['keys']['vm']['networks'].empty?
+  # Install iptables
+  include_recipe "iptables"
+  
   # Define a iptables.snat file so rebuild-iptables uses it
   template "/etc/iptables.snat" do
     source "iptables.snat.erb"
