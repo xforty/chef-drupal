@@ -25,6 +25,7 @@ include_recipe "php_module::dom"
 include_recipe "php_module::gd"
 include_recipe "php_module::mbstring"
 include_recipe "php_module::mysql"
+include_recipe "php_module::uploadprogress"
 include_recipe "imagemagick"
 include_recipe "apache2"
 include_recipe "apache2::mod_expires"
@@ -33,11 +34,6 @@ include_recipe "apache2::mod_rewrite"
 include_recipe "mysql::server"
 include_recipe "drush"
 include_recipe "iptables"
-
-# Provides better feedback during file uploads
-php_pear "uploadprogress" do
-  action :install
-end
 
 # Define virtualhost in apache for site
 web_app node[:drupal][:project_name] do
