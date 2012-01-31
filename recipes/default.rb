@@ -57,5 +57,15 @@ if node['vagrant']['config']['keys']['vm']['networks'].empty?
 
   # Basic rule to kick off rebuild-iptables 
   iptables_rule "all_established"
-end
 
+  # Flush iptables for distros that need it
+  case node["platform"]
+  when "centos", "redhat", "fedora"
+    execute "flush_iptables" do
+      command "/sbin/iptables -F"
+    end
+    execute "flush_iptables_nat" do
+      command "/sbin/iptables -F -t nat"
+    end
+  end
+end
