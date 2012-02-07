@@ -1,5 +1,6 @@
 #
 # Author:: David King <dking@xforty.com>
+# Contributor:: Christian Pearce <pearcec@xforty.com>
 # Cookbook Name:: drupal
 # Recipe:: default
 #
@@ -18,19 +19,7 @@
 # limitations under the License.
 #
 
-include_recipe "php"
-include_recipe "php_pear"
-include_recipe "php_module::curl"
-include_recipe "php_module::dom"
-include_recipe "php_module::gd"
-include_recipe "php_module::mbstring"
-include_recipe "php_module::mysql"
-include_recipe "php_module::uploadprogress"
-include_recipe "imagemagick"
-include_recipe "apache2"
-include_recipe "apache2::mod_expires"
-include_recipe "apache2::mod_php5"
-include_recipe "apache2::mod_rewrite"
+include_recipe "drupal::server"
 include_recipe "mysql::server"
 include_recipe "drush"
 
