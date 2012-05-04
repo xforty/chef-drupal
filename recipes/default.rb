@@ -27,16 +27,20 @@ include_recipe "apache2::mod_rewrite"
 include_recipe "mysql::server"
 include_recipe "drush"
 
+# Special setup for when Vagrantfile uses forwarded_ports
+if defined? node['vagrant']['config']['keys']['vm']['forwarded_ports']
+
+  # Using forwarded_ports always means "localhost" for server name
+  node[:drupal][:server_name] = "localhost"
+
+  # Solves the problem of HTTP request statuses failing with forwarded_ports
+  # https://github.com/xforty/vagrant-drupal/issues/1
+  include_recipe "drupal::iptables"
+end
+
 # Define virtualhost in apache for site
 web_app node[:drupal][:project_name] do
   server_name node[:drupal][:server_name]
   server_aliases [node[:drupal][:server_name], 'local.vbox']
   docroot node[:drupal][:docroot]
-end
-
-# Only use iptables if forwarded_ports are defined.
-# Solves the problem of HTTP request statuses failing.
-# https://github.com/xforty/vagrant-drupal/issues/1
-if defined? node['vagrant']['config']['keys']['vm']['forwarded_ports']
-  include_recipe "drupal::iptables"
 end
