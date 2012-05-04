@@ -34,31 +34,9 @@ web_app node[:drupal][:project_name] do
   docroot node[:drupal][:docroot]
 end
 
-# Only use iptables if no networking was defined.
-if node['vagrant']['config']['keys']['vm']['networks'].empty?
-  # Install iptables
-  include_recipe "iptables"
-  
-  # Define a iptables.snat file so rebuild-iptables uses it
-  template "/etc/iptables.snat" do
-    source "iptables.snat.erb"
-    mode 0440
-    owner "root"
-    group "root"
-    variables :forwarded_ports => node[:vagrant][:config][:keys][:vm][:forwarded_ports]
-  end
-
-  # Basic rule to kick off rebuild-iptables 
-  iptables_rule "all_established"
-
-  # Flush iptables for distros that need it
-  case node["platform"]
-  when "centos", "redhat", "fedora"
-    execute "flush_iptables" do
-      command "/sbin/iptables -F"
-    end
-    execute "flush_iptables_nat" do
-      command "/sbin/iptables -F -t nat"
-    end
-  end
+# Only use iptables if forwarded_ports are defined.
+# Solves the problem of HTTP request statuses failing.
+# https://github.com/xforty/vagrant-drupal/issues/1
+if defined? node['vagrant']['config']['keys']['vm']['forwarded_ports']
+  include_recipe "drupal::iptables"
 end
