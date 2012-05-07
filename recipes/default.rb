@@ -27,8 +27,8 @@ include_recipe "apache2::mod_rewrite"
 include_recipe "mysql::server"
 include_recipe "drush"
 
-# Special setup for when Vagrantfile uses forwarded_ports
-if defined? node['vagrant']['config']['keys']['vm']['forwarded_ports']
+# No networks defined means we are using forwarded_ports, apply special setup
+if node['vagrant']['config']['keys']['vm']['networks'].empty?
 
   # Using forwarded_ports always means "localhost" for server name
   node[:drupal][:server_name] = "localhost"
