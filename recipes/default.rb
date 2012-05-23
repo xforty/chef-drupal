@@ -26,7 +26,6 @@ include_recipe "apache2::mod_php5"
 include_recipe "apache2::mod_rewrite"
 include_recipe "mysql::server"
 include_recipe "drush"
-include_recipe "drush::ssh"
 
 # No networks defined means we are using forwarded_ports, apply special setup
 if node['vagrant']['config']['keys']['vm']['networks'].empty?
