@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-default[:drupal][:project_name] = "drupal"
-default[:drupal][:server_name]  = "local.#{node[:drupal][:project_name]}"
+default[:drupal][:project_name] = node['vagrant']['config']['keys']['vm']['host_name']
+default[:drupal][:server_name]  = "#{node[:drupal][:project_name]}.local"
 default[:drupal][:docroot]      = "/srv/www"
 
