@@ -6,15 +6,15 @@ for a drupal environment.
 
 ### Requirements ###
 
-* [Opscode's apache2 cookbook](http://community.opscode.com/cookbooks/apache2/)
+* See [metadata.rb](https://github.com/xforty/chef-drupal/blob/master/metadata.rb)
 
 ### Attributes ###
 
 #### default ####
 
-* node[:drupal][:project_name] - fqdn of the site (you should override this)
-* node[:drupal][:docroot]      - apache docroot for the site (not necessary to override)
-* node[:drupal][:server_name]  - URL used to access the site locally (not necessary to override)
+* `node['drupal']['project_name']` - Name of the web app (default: VM's host name)
+* `node['drupal']['docroot']`      - Apache docroot for the site
+* `node['drupal']['server_name']`  - URL used to access the site locally (default: project_name with ".local" appended)
 
 ### USAGE ###
 

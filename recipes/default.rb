@@ -31,7 +31,7 @@ include_recipe "drush"
 if node['vagrant']['config']['keys']['vm']['networks'].empty?
 
   # Using forwarded_ports always means "localhost" for server name
-  node[:drupal][:server_name] = "localhost"
+  node['drupal']['server_name'] = "localhost"
 
   # Solves the problem of HTTP request statuses failing with forwarded_ports
   # https://github.com/xforty/vagrant-drupal/issues/1
@@ -39,8 +39,8 @@ if node['vagrant']['config']['keys']['vm']['networks'].empty?
 end
 
 # Define virtualhost in apache for site
-web_app node[:drupal][:project_name] do
-  server_name node[:drupal][:server_name]
-  server_aliases [node[:drupal][:server_name], 'local.vbox']
-  docroot node[:drupal][:docroot]
+web_app node['drupal']['project_name'] do
+  server_name node['drupal']['server_name']
+  server_aliases [node['drupal']['server_name']]
+  docroot node['drupal']['docroot']
 end
