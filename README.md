@@ -1,6 +1,6 @@
 chef-drupal
 ===========
-version 1.0.x - [changelog](https://github.com/xforty/chef-drupal/blob/master/CHANGELOG.md)
+version 1.0.0 - [changelog](https://github.com/xforty/chef-drupal/blob/master/CHANGELOG.md)
 
 ### Description
 
@@ -9,7 +9,7 @@ for a drupal environment.
 
 ### Requirements
 
-* See [metadata.rb](https://github.com/xforty/chef-drupal/blob/master/metadata.rb)
+See [metadata.rb](https://github.com/xforty/chef-drupal/blob/master/metadata.rb)
 
 ### Attributes
 
