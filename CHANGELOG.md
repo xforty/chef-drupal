@@ -1,6 +1,10 @@
 chef-drupal changelog
 =====================
 
+### 1.1.0 (August 13, 2012)
+
+  * Use chef-xforty drush recipe [GH-4]
+
 ### 1.0.0 (August 9, 2012)
 
   * Started using git-flow for development
